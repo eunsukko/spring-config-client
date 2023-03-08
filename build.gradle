@@ -1,0 +1,54 @@
+buildscript {
+    ext {
+        springBootVersion = '2.4.9'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'groovy'
+
+
+group 'com.github.eunsukko'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+// https://darkstart.tistory.com/238
+// https://www.baeldung.com/spring-maven-bom
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2020.0.6'
+    }
+}
+
+dependencies {
+    implementation('org.springframework.cloud:spring-cloud-starter-config')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    compileOnly('org.projectlombok:lombok:1.18.24')
+    annotationProcessor('org.projectlombok:lombok:1.18.24')
+
+    testCompileOnly('org.projectlombok:lombok:1.18.24')
+    testAnnotationProcessor('org.projectlombok:lombok:1.18.24')
+
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+test {
+    useJUnitPlatform()
+}
