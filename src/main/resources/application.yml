@@ -1,3 +1,12 @@
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+#        https://incheol-jung.gitbook.io/docs/study/srping-in-action-5th/chap-16.
+        include: health, refresh
+
 spring:
   application:
     name: config-client
