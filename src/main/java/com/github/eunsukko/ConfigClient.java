@@ -25,6 +25,6 @@ public class ConfigClient {
 
     @GetMapping(value = "/whoami/{username}", produces = MediaType.TEXT_PLAIN_VALUE)
     public String whoami(@PathVariable("username") String username) {
-        return String.format("Hello! You're %s and you'll become a(n) %s...\n", username, role);
+        return String.format("Hello! You're %s and you'll become a(n) %s...\n", username, environment.getProperty("user.role"));
     }
 }

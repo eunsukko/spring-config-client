@@ -5,15 +5,23 @@ management:
     web:
       exposure:
 #        https://incheol-jung.gitbook.io/docs/study/srping-in-action-5th/chap-16.
-        include: health, refresh
+        include: health, refresh, env
 
 spring:
   application:
     name: config-client
   profiles:
     active: develop
+  kafka:
+    bootstrap-servers: http://my-kafka:9092
+  cloud:
+    bus:
+      ack:
+        enabled: true
+        refresh:
+          enabled: true
 #  config:
 #    import: "configserver:"
 
 server:
-  port: 8080
+  port: 8081
