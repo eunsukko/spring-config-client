@@ -92,7 +92,7 @@ class Solution3Test {
     // ["b 50","tx begin","a 50","tx rollback","tx end","c 50","tx begin","a 70","tx end"]
 
     // 기대하는 결과
-    // ["b 50"]
+    // ["a 70","b 50","c 50"]
     @Test
     public void testCase7_앞선_트랜잭션이_롤백되도_뒤에_트랜잭션은_영향받지_않는다() {
         var commands = Arrays.asList("b 50","tx begin","a 50","tx rollback","tx end","c 50","tx begin","a 70","tx end");
